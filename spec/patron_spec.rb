@@ -16,8 +16,8 @@ RSpec.describe Patron do
   end
 
   it '#add_interests' do
-    patron_1.add_interests("Dead Sea Scrolls")
-    patron_1.add_interests("Gems and Minerals")
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
 
     expect(patron_1.interests).to eq(["Dead Sea Scrolls", "Gems and Minerals"])
   end
