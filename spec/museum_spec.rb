@@ -44,7 +44,7 @@ RSpec.describe Museum do
   it '#admit' do
     patron_1.add_interest("Dead Sea Scrolls")
     patron_1.add_interest("Gems and Minerals")
-    patron_2.add_interest("IMAX")
+    patron_2.add_interest("Dead Sea Scrolls")
     patron_3.add_interest("Dead Sea Scrolls")
 
     dmns.admit(patron_1)
@@ -54,8 +54,22 @@ RSpec.describe Museum do
     expect(dmns.patrons).to eq(patron_1, patron_2, patron_3)
   end
 
+  it '#patrons_by_exhibit_interest' do
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
+    patron_2.add_interest("Dead Sea Scrolls")
+    patron_3.add_interest("Dead Sea Scrolls")
 
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
 
-
-
+    expect(patrons_by_exhibit_interest).to eq(
+      {
+        gems_and_minerals => [patron_1],
+        dead_sea_scrolls => [patron_1, patron_2, patron_3],
+        imax => []
+      }
+    )
+  end
 end
