@@ -35,4 +35,13 @@ RSpec.describe Museum do
     expect(dmns.recommend_exhibits(patron_1)).to eq([ gems_and_minerals, dead_sea_scrolls])
     expect(dmns.recommend_exhibits(patron_2)).to eq([imax])
   end
+
+  it '#patrons' do
+    expect(dmns.patrons).to eq([])
+  end
+
+  
+
+
+
 end
