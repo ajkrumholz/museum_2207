@@ -7,6 +7,7 @@ RSpec.describe Museum do
   let(:imax) { Exhibit.new({name: "IMAX",cost: 15}) }
   let(:patron_1) { Patron.new("Bob", 20)}
   let(:patron_2) { Patron.new("Sally", 20)}
+  let(:patron_3) { Patron.new("Johnny", 5)}
 
   it '#name' do
     expect(dmns.name).to eq("Denver Museum of Nature and Science")
@@ -40,7 +41,20 @@ RSpec.describe Museum do
     expect(dmns.patrons).to eq([])
   end
 
-  
+  it '#admit' do
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
+    patron_2.add_interest("IMAX")
+    patron_3.add_interest("Dead Sea Scrolls")
+
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
+
+    expect(dmns.patrons).to eq(patron_1, patron_2, patron_3)
+  end
+
+
 
 
 
