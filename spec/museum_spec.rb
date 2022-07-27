@@ -94,5 +94,7 @@ RSpec.describe Museum do
     expect(dmns.draw_lottery_winner(gems_and_minerals)).to eq(nil)
   end
 
-
+  it '#announce_lottery_winner' do
+    expect(dmns.announce_lottery_winner(dead_sea_scrolls)).to be_a(String)
+  end
 end
