@@ -76,8 +76,19 @@ RSpec.describe Museum do
   end
 
   it '#ticket lottery contestants' do
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
+    patron_2.add_interest("Dead Sea Scrolls")
+    patron_3.add_interest("Dead Sea Scrolls")
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
+    
     expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq([patron_1, patron_3])
   end
 
-  
+
 end
